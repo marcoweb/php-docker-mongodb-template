@@ -1,25 +1,26 @@
 {
-	"name": "PHP in Docker",
-	"build": {
-         "dockerfile": "Dockerfile"
-     },
-	 "features": {
- 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
- 			"version": "latest",
- 			"enableNonRootDocker": "true",
- 			"moby": "true"
- 		}
- 	},
-	"forwardPorts": [
-		3306,
-		80
-	],
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"zobo.php-intellisense"
-			]
-		}
-	},
-	"postCreateCommand": "composer update && docker compose up -d"
+    "name": "PHP + MongoDB",
+
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+
+    "forwardPorts": [
+        80,
+        27017
+    ],
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "DEVSENSE.phptools-vscode"
+            ]
+        }
+    },
+
+    "postCreateCommand": "composer install && docker compose up -d"
 }
